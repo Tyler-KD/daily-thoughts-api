@@ -1,7 +1,7 @@
 const { User } = require('../models');
 
 module.exports = {
-    
+
     // GET all users
     async getUsers(req, res) {
         try {
@@ -80,4 +80,44 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
+    // POST to add a friend to user's friend list
+    async addFriend(req, res) {
+        try {
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                // Adds ID of friend to user's friends array
+                { $addToSet: { friends: req.params.friendId } },
+                { runValidators: true, new: true }
+            );
+
+            if (!user) {
+                return res.status(404).json({ message: 'No user with this id!' })
+            }
+
+            res.json(user);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+
+    // DELETE to remove a friend from user's friend list
+    async removeFriend(req, res) {
+        try {
+            const user = await User.findOneAndUpdate(
+                { _id: req.params.userId },
+                // Removes ID of friend from the user's friends array
+                { $pull: { friends: req.params.friendId } },
+                { runValidators: true, new: true }
+            );
+
+            if (!user) {
+                return res.status(404).json({ message: 'No user with this id!' })
+            }
+
+            res.json(user);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    }
 }

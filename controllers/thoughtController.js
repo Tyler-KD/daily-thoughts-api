@@ -3,7 +3,7 @@ const { Thought, User } = require('../models');
 module.exports = {
 
     // GET to get all thoughts
-    async getThought(req, res) {
+    async getThoughts(req, res) {
         try {            
             const thoughts = await Thought.find()
             res.json(thoughts)
@@ -120,7 +120,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    
+
     // DELETE to pull and remove a reaction by the reaction's reactionId value
     async removeReaction(req, res) {
         try {

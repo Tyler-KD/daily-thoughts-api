@@ -20,7 +20,8 @@ const thoughtSchema = new Schema(
             // Sets default value of createdAt to the current date and time when new document is created
             default: Date.now(),
             // Getter function for taking the raw timestamp stored in the database and formats it using the dateFormat function.
-            get: (timestamp) => dateFormat(timestamp),
+            // .toLocaleString formats date as MM/DD/YYYY
+            get: (timestamp) => new Date(timestamp).toLocaleString(),
         },
         username: {
             type: String,

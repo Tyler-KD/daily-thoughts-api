@@ -68,7 +68,7 @@ module.exports = {
     async deleteUser(req, res) {
         try {
             // Find a user in the database with the ID provided in the request parameters and remove that user from the database
-            const user = await User.findOneAndRemove({ _id: req.params.userId });
+            const user = await User.findOneAndDelete({ _id: req.params.userId });
             
             if (!user) {
                 return res.status(404).json({ message: 'No such user exists' })

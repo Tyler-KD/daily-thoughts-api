@@ -81,7 +81,12 @@ module.exports = {
     async deleteThought(req, res) {
         try {
             // Find a thought in the database with the ID provided and delete it
-            const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
+            const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
+
+            if (!thought) {
+                return res.status(404).json({ message: 'No thought with this id!' });
+            }
+
             // Finds a user in the database with an ID that matches req.body.userID and updates that user's thoughts array
             const user = await User.findOneAndUpdate(
                 { thoughts: req.params.thoughtId },

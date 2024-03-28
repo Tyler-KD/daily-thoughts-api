@@ -59,6 +59,9 @@ const getRandomUsername = () => `${getRandomArrItem(usernames)}`;
 // Gets a random email
 const getRandomEmail = () => `${getRandomArrItem(emails)}`;
 
+// Gets a random friend
+const getRandomFriend = () => `${getRandomArrItem(usernames)}`;
+
 // Function to generate random thoughts that can be added to the database.  Includes thought reactions.
 const getRandomThoughts = (int) => {
     let results = [];
@@ -87,4 +90,4 @@ const getThoughtReactions = (int) => {
     return results;
 };
 
-module.exports = { getRandomUsername, getRandomEmail, getRandomThoughts };
+module.exports = { getRandomUsername, getRandomEmail, getRandomFriend, getRandomThoughts };

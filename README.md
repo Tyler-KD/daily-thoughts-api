@@ -29,7 +29,7 @@ To run this application from the terminal, enter "npm run start" to start the se
 
 **API Endpoints:**
 
-All endpoints must include the necessary paramaters or requests within the body.
+All endpoints must include the necessary parameters or requests within the body or URL.
 
 1. GET /api/users - Find all Users
 

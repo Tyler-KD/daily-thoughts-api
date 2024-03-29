@@ -35,9 +35,9 @@ module.exports = {
         try {
             // Creates a new thought in the database
             const thought = await Thought.create(req.body);
-            // Finds a user in the database with an ID that matches req.body.userID and updates that user's thoughts array
+            // Finds a user in the database with an ID that matches req.body.username and updates that user's thoughts array
             const user = await User.findOneAndUpdate(
-                { _id: req.body.userId },
+                { username: req.body.username },
                 // Adds ID of newly created thought to user's thoughts array
                 { $addToSet: { thoughts: thought._id } },
                 // Return updated document

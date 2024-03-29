@@ -21,7 +21,7 @@ module.exports = {
             const user = await User.findOne({ _id: req.params.userId })
             // The select('-__v') is used to exclude the __v field from the result
             .select('-__v')
-            // The populate() is used to replace the specified paths in the document's result ('thoughts' and 'friends'), with documents from other collections.
+            // The populate() is used to replace the specified paths in the document's result ('thoughts' and 'friends'), with documents from other collections
             .populate('thoughts').populate('friends');
         // If no user is found with ID, it sends a 404 status code
         if (!user) {

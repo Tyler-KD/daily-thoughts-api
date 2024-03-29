@@ -4,7 +4,7 @@ const usernames = [
     'vesper94',
     'Camus3',
     'Otho',
-    'Morgana',
+    'Carmilla',
     'Sita',
     'AccioForest',
     'ominous',
@@ -60,7 +60,11 @@ const getRandomUsername = () => `${getRandomArrItem(usernames)}`;
 const getRandomEmail = () => `${getRandomArrItem(emails)}`;
 
 // Gets a random friend
-const getRandomFriend = () => `${getRandomArrItem(usernames)}`;
+const getRandomFriend = () => {
+    const randomItem = getRandomArrItem(usernames);
+    console.log(usernames)
+    return randomItem
+};
 
 // Function to generate random thoughts that can be added to the database.  Includes thought reactions.
 const getRandomThoughts = (int) => {
